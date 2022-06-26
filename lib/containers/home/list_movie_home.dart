@@ -44,7 +44,7 @@ class _ListMovieHomeState extends State<ListMovieHome> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => MovieDetail(
-                            index: index,
+                            id: index,
                           ),
                         ),
                       );

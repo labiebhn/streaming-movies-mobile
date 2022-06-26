@@ -52,7 +52,7 @@ class _CaoruselHomeState extends State<CaoruselHome> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => MovieDetail(
-                                index: index,
+                                id: index,
                               ),
                             ),
                           );

@@ -72,7 +72,7 @@ class _SearchState extends State<Search> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => MovieDetail(
-                                    index: item['id'],
+                                    id: item['id'],
                                   ),
                                 ),
                               );

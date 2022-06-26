@@ -4,11 +4,12 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:movies_app/components/badges/badge-tag.dart';
 import 'package:movies_app/components/carousels/config.dart';
+import 'package:movies_app/models/movie_detail_model.dart';
 import 'package:movies_app/utils/fonts.dart';
 
 class HeaderMovie extends StatelessWidget {
-  final int index;
-  const HeaderMovie({Key? key, required this.index}) : super(key: key);
+  final Data? data;
+  const HeaderMovie({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class HeaderMovie extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(bottom: 2.0),
             child: CachedNetworkImage(
-              imageUrl: carouselHomeData[index]['image'],
+              imageUrl: data?.image ?? '',
               width: width,
               height: heightContainer,
               fit: BoxFit.cover,
@@ -57,14 +58,14 @@ class HeaderMovie extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(bottom: 6.0),
                   child: Text(
-                    carouselHomeData[index]['type'],
+                    data?.type ?? '',
                     style: Fonts.p,
                   ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(bottom: 12.0),
                   child: Text(
-                    carouselHomeData[index]['title'],
+                    data?.title ?? '',
                     style: Fonts.h2,
                     textAlign: TextAlign.center,
                   ),
@@ -73,7 +74,7 @@ class HeaderMovie extends StatelessWidget {
                   margin: EdgeInsets.only(bottom: 14.0),
                   child: Wrap(
                     children: [
-                      ...carouselHomeData[index]['tags'].map(
+                      ...?data?.tags?.map(
                         (tag) {
                           return Container(
                             margin: const EdgeInsets.symmetric(horizontal: 4.0),
@@ -89,7 +90,7 @@ class HeaderMovie extends StatelessWidget {
                 Container(
                   width: 300,
                   child: Text(
-                    carouselHomeData[index]['description'],
+                    data?.description ?? '',
                     style: Fonts.p,
                     textAlign: TextAlign.center,
                   ),

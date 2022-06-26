@@ -58,7 +58,7 @@ class _FavoriteState extends State<Favorite> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => MovieDetail(
-                                    index: index,
+                                    id: index,
                                   ),
                                 ),
                               );
@@ -78,7 +78,7 @@ class _FavoriteState extends State<Favorite> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => MovieDetail(
-                                    index: index,
+                                    id: index,
                                   ),
                                 ),
                               );

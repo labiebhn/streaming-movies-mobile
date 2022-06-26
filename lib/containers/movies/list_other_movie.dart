@@ -8,9 +8,11 @@ import 'package:movies_app/components/carousels/config.dart';
 import 'package:movies_app/screens/movies/movie_detail.dart';
 import 'package:movies_app/utils/fonts.dart';
 import 'package:collection/collection.dart';
+import '../../models/movie_model.dart';
 
 class ListOrherMovie extends StatefulWidget {
-  const ListOrherMovie({Key? key}) : super(key: key);
+  final List<Data?> movies;
+  const ListOrherMovie({Key? key, required this.movies}) : super(key: key);
 
   @override
   State<ListOrherMovie> createState() => _ListOrherMovieState();
@@ -36,36 +38,17 @@ class _ListOrherMovieState extends State<ListOrherMovie> {
             runSpacing: 8.0,
             spacing: 8.0,
             children: [
-              ...carouselHomeData.mapIndexed(
+              ...widget.movies.mapIndexed(
                 (index, item) {
                   return Container(
                     child: CardMovie(
-                      imageUrl: item['image'],
+                      imageUrl: item?.image ?? '',
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => MovieDetail(
-                              index: index,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  );
-                },
-              ),
-              ...carouselHomeData.mapIndexed(
-                (index, item) {
-                  return Container(
-                    child: CardMovie(
-                      imageUrl: item['image'],
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MovieDetail(
-                              index: index,
+                              id: item?.id ?? 0,
                             ),
                           ),
                         );
